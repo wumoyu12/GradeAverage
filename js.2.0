@@ -1,0 +1,82 @@
+window.addEventListener("load",addListener);
+var FirstName = "", LastName = "", osis = "", course = "", grade = ""; displaycourse = "Course: ", displaygrade = "Grade: "; average = 0
+
+function addListener()
+{
+	document.getElementById("btnsubmit").addEventListener("click",Submit);
+	document.getElementById("btnAddCourse").addEventListener("click",AddCourse);
+}
+
+function Submit()
+{
+	GetInfo();
+	AllInfo();
+	document.write(FirstName + " " + LastName + "\n" + average + displaycourse + displaygrade);
+}
+
+function AddCourse()
+{
+	GetInfo();
+	document.getElementById("txtfirstname").disabled = true;
+	document.getElementById("txtlastname").disabled = true;
+	document.getElementById("txtID").disabled = true;
+	AllInfo();
+	document.getElementById("txtCourse").value = "";
+	document.getElementById("txtGrade").value = "";
+}
+
+function AllInfo()
+{
+	displaycourse = displaycourse + "\n" + course;
+	displaygrade = displaygrade + "\n" + grade;
+	average = parseFloat(average) + parseFloat(grade);
+}
+
+function GetInfo()
+{
+	FirstName = document.getElementById("txtfirstname").value;
+	LastName = document.getElementById("txtlastname").value;
+	osis = document.getElementById("txtID").value;
+	course = document.getElementById("txtCourse").value;
+	grade = document.getElementById("txtGrade").value;
+	CheckInfo();
+}
+
+function CheckInfo()
+{
+	msg = "";
+	if(grade == "")
+	{
+		msg = "G";
+		document.getElementById("txtGrade").focus();
+	}
+	if(course == "")
+	{
+		msg = "C";
+		document.getElementById("txtCourse").focus();
+	}
+	if(osis == "")
+	{
+		msg = "O";
+		document.getElementById("txtID").focus();
+	}
+	if(LastName == "")
+	{
+		msg = "L";
+		document.getElementById("txtlastname").focus();
+	}
+	if(FirstName == "")
+	{
+		msg = "F";
+		document.getElementById("txtfirstname").focus();
+	}
+	
+	if(msg == "")
+	{
+		alert("GOOOOODD");
+	}
+	else
+	{
+		alert("Missing Information");
+	}
+}
