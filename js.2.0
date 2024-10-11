@@ -52,7 +52,7 @@ function AllInfo()
 	alert(average);
 	alert(gpa);
 	alert(letter);
-	alert(course1 + ":" + grade1 + "," + course2 + ":" + grade2 + "," + course3 + ":" + grade3);
+	alert("Grade: " + grade1 + "\nGrade: " + grade2);
 }
 
 function GPA()
@@ -64,15 +64,15 @@ function Letter()
 {
 	switch(average)
 	{
-		case average <= 100 && average >= 90:
+		case (average <= 100 && average >= 90):
 			letter = "A";
-		case average < 90 && average >= 80:
+		case (average < 90 && average >= 80):
 			letter = "B";
-		case average < 80 && average >= 70:
+		case (average < 80 && average >= 70):
 			letter = "C";
-		case average < 70 && average >= 60:
+		case (average < 70 && average >= 60):
 			letter = "D";
-		case average < 60 && average >= 0:
+		case (average < 60 && average >= 0):
 			letter = "F";
 	}
 	alert(letter)
