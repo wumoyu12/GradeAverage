@@ -1,35 +1,19 @@
 window.addEventListener("load",addListener);
-var FirstName = "", LastName = "", osis = "", course = "", grade = ""; displaycourse = "Course: ", displaygrade = "Grade: "; average = 0
+var FirstName = "", LastName = "", osis = "", course = "", grade = "", numcourses = 0, AddOrSubmit = "",
+course1 = "", grade1 = "", course2 = "", grade2 = "", course3 = "", grade3 = "", course4 = "", grade4 = "",
+course5 = "", grade5 = "", course6 = "", grade6 = "", course7 = "", grade7 = "", course8 = "", grade8 = "",
+average = 0, gpa = "", letter = "";
 
 function addListener()
 {
-	document.getElementById("btnsubmit").addEventListener("click",Submit);
 	document.getElementById("btnAddCourse").addEventListener("click",AddCourse);
-}
-
-function Submit()
-{
-	GetInfo();
-	AllInfo();
-	document.write(FirstName + " " + LastName + "\n" + average + displaycourse + displaygrade);
+	document.getElementById("btnsubmit").addEventListener("click",Submit);
 }
 
 function AddCourse()
 {
+	AddOrSubmit = "A";
 	GetInfo();
-	document.getElementById("txtfirstname").disabled = true;
-	document.getElementById("txtlastname").disabled = true;
-	document.getElementById("txtID").disabled = true;
-	AllInfo();
-	document.getElementById("txtCourse").value = "";
-	document.getElementById("txtGrade").value = "";
-}
-
-function AllInfo()
-{
-	displaycourse = displaycourse + "\n" + course;
-	displaygrade = displaygrade + "\n" + grade;
-	average = parseFloat(average) + parseFloat(grade);
 }
 
 function GetInfo()
@@ -39,13 +23,112 @@ function GetInfo()
 	osis = document.getElementById("txtID").value;
 	course = document.getElementById("txtCourse").value;
 	grade = document.getElementById("txtGrade").value;
+	grade = parseFloat(grade);
 	CheckInfo();
+}
+
+function AddInfo()
+{
+	numcourses = numcourses + 1
+	WhichCourse();
+	average = average + grade;
+	if(AddOrSubmit == "A")
+		{
+			document.getElementById("txtCourse").value = "";
+			document.getElementById("txtGrade").value = "";
+			document.getElementById("txtCourse").focus();
+		}
+		else
+		{
+			AllInfo();
+		}
+}
+
+function AllInfo()
+{
+	average = average/numcourses;
+	GPA();
+	Letter();
+	alert(average);
+	alert(gpa);
+	alert(letter);
+	alert(course1 + ":" + grade1 + "," + course2 + ":" + grade2 + "," + course3 + ":" + grade3);
+}
+
+function GPA()
+{
+	gpa = average / 100 * 4
+}
+
+function Letter()
+{
+	switch(average)
+	{
+		case average <= 100 && average >= 90:
+			letter = "A";
+		case average < 90 && average >= 80:
+			letter = "B";
+		case average < 80 && average >= 70:
+			letter = "C";
+		case average < 70 && average >= 60:
+			letter = "D";
+		case average < 60 && average >= 0:
+			letter = "F";
+	}
+	alert(letter)
+}
+
+function WhichCourse()
+{
+	switch(numcourses)
+	{
+		case 1:
+			course1 = course;
+			grade1 = grade;
+			break;
+		case 2:
+			course2 = course;
+			grade2 = grade;
+			break;
+		case 3:
+			course3 = course;
+			grade3 = grade;
+			break;
+		case 4:
+			course4 = course;
+			grade4 = grade;
+			break;
+		case 5:
+			course5 = course;
+			grade5 = grade;
+			break;
+		case 6:
+			course6 = course;
+			grade6 = grade;
+			break;
+		case 7:
+			course7 = course;
+			grade7 = grade;
+			break;
+		case 8:
+			alert("8 is the maximum numbers of courses");
+			course8 = course;
+			grade8 = grade;
+			AddOrSubmit = "S";
+			break;
+	}
+}
+
+function Submit()
+{
+	AddOrSubmit = "S";
+	GetInfo();
 }
 
 function CheckInfo()
 {
 	msg = "";
-	if(grade == "")
+	if(grade == "" || (grade < 0 || grade > 100))
 	{
 		msg = "G";
 		document.getElementById("txtGrade").focus();
@@ -73,10 +156,13 @@ function CheckInfo()
 	
 	if(msg == "")
 	{
-		alert("GOOOOODD");
+		document.getElementById("txtfirstname").disabled = true;
+		document.getElementById("txtlastname").disabled = true;
+		document.getElementById("txtID").disabled = true;
+		AddInfo();
 	}
 	else
 	{
-		alert("Missing Information");
+		alert("Missing Information / Invalid format for grade");
 	}
 }
