@@ -1,0 +1,38 @@
+h1, h2
+{
+	color: #574453;
+	font-family: Times New Roman
+}
+
+body
+{
+	color: #131564;
+	font-family: Courier New;
+	background-color: #7ab3b4;
+}
+
+input[id = "txtID"], input[id = "txtfirstname"],input[id = "txtlastname"]
+{
+	width: 100px;
+}
+
+input[id = "txtfirstname"]
+{
+	margin-left: 10px;
+}
+
+input[id = "txtlastname"]
+{
+	margin-left: 19px;
+}
+
+input[id = "txtGrade"],[id = "txtCourse"]
+{
+	margin-left: 5px;
+	width: 50px;
+}
+
+button
+{
+	font-family:Courier New;
+}
