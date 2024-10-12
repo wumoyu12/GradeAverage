@@ -1,0 +1,207 @@
+window.addEventListener("load",addListener);
+var FirstName = "", LastName = "", osis = "", course = "", grade = "", numcourses = 0, AddOrSubmit = "",
+course1 = "", grade1 = "", course2 = "", grade2 = "", course3 = "", grade3 = "", course4 = "", grade4 = "",
+course5 = "", grade5 = "", course6 = "", grade6 = "", course7 = "", grade7 = "", course8 = "", grade8 = "",
+average = 0, gpa = "", letter = "";
+
+function addListener()
+{
+	document.getElementById("btnAddCourse").addEventListener("click",AddCourse);
+	document.getElementById("btnsubmit").addEventListener("click",Submit);
+}
+
+function AddCourse()
+{
+	AddOrSubmit = "A";
+	GetInfo();
+}
+
+function Submit()
+{
+	AddOrSubmit = "S";
+	GetInfo();
+}
+
+function GetInfo()
+{
+	FirstName = document.getElementById("txtfirstname").value;
+	LastName = document.getElementById("txtlastname").value;
+	osis = document.getElementById("txtID").value;
+	course = document.getElementById("txtCourse").value;
+	grade = document.getElementById("txtGrade").value;
+	CheckInfo();
+}
+
+function CheckInfo()
+{
+	msg = "";
+	if(grade == "" || (grade < 0 || grade > 100))
+	{
+		msg = "G";
+		document.getElementById("txtGrade").focus();
+	}
+	if(course == "")
+	{
+		msg = "C";
+		document.getElementById("txtCourse").focus();
+	}
+	if(osis == "")
+	{
+		msg = "O";
+		document.getElementById("txtID").focus();
+	}
+	if(LastName == "")
+	{
+		msg = "L";
+		document.getElementById("txtlastname").focus();
+	}
+	if(FirstName == "")
+	{
+		msg = "F";
+		document.getElementById("txtfirstname").focus();
+	}
+	
+	if(msg == "")
+	{
+		document.getElementById("txtfirstname").disabled = true;
+		document.getElementById("txtlastname").disabled = true;
+		document.getElementById("txtID").disabled = true;
+		AddInfo();
+	}
+	else
+	{
+		alert("Missing Information / Invalid format for grade");
+	}
+}
+
+function AddInfo()
+{
+	numcourses = numcourses + 1
+	WhichCourse();
+	grade = parseFloat(grade);
+	average = average + grade;
+	if(AddOrSubmit == "A")
+		{
+			document.getElementById("txtCourse").value = "";
+			document.getElementById("txtGrade").value = "";
+			document.getElementById("txtCourse").focus();
+		}
+		else
+		{
+			AllInfo();
+		}
+}
+
+function WhichCourse()
+{
+	switch(numcourses)
+	{
+		case 1:
+			course1 = course + ":";
+			grade1 = grade;
+			break;
+		case 2:
+			course2 = course + ":";
+			grade2 = grade;
+			break;
+		case 3:
+			course3 = course + ":";
+			grade3 = grade;
+			break;
+		case 4:
+			course4 = course + ":";
+			grade4 = grade;
+			break;
+		case 5:
+			course5 = course + ":";
+			grade5 = grade;
+			break;
+		case 6:
+			course6 = course + ":";
+			grade6 = grade;
+			break;
+		case 7:
+			course7 = course + ":";
+			grade7 = grade;
+			break;
+		case 8:
+			alert("8 is the maximum numbers of courses");
+			course8 = course + ":";
+			grade8 = grade;
+			AddOrSubmit = "S";
+			break;
+	}
+}
+
+function AllInfo()
+{
+	Average();
+	Letter();
+	//alert(average);
+	//alert(gpa);
+	//alert(letter);
+	//alert(course1 + grade1 + "\n" + course2 + grade2 + "\n" + course3 + grade3 + "\n" + course4 + grade4 + "\n" 
+	//+ course5 + grade5 + "\n" + course6 + grade6 + "\n" + course7 + grade7 + "\n" + course8 + grade8);
+	document.getElementById("lblName").textContent = "Full Name: " + FirstName + " " +LastName;
+	document.getElementById("lblOSIS").textContent = "OSIS: " + osis;
+	
+	document.getElementById("lblAverage").textContent = "Average: " + average;
+	document.getElementById("lblGPA").textContent = "GPA: " + gpa;
+	document.getElementById("lblLetter").textContent = "Letter Grade: " + letter;
+	
+	document.getElementById("lblcourse1").textContent = course1;
+	document.getElementById("lblgrade1").textContent = grade1;
+	document.getElementById("lblcourse2").textContent = course2;
+	document.getElementById("lblgrade2").textContent = grade2;
+	document.getElementById("lblcourse3").textContent = course3;
+	document.getElementById("lblgrade3").textContent = grade3;
+	document.getElementById("lblcourse4").textContent = course4;
+	document.getElementById("lblgrade4").textContent = grade4;
+	document.getElementById("lblcourse5").textContent = course5;
+	document.getElementById("lblgrade5").textContent = grade5;
+	document.getElementById("lblcourse6").textContent = course6;
+	document.getElementById("lblgrade6").textContent = grade6;
+	document.getElementById("lblcourse7").textContent = course7;
+	document.getElementById("lblgrade7").textContent = grade7;
+	document.getElementById("lblcourse8").textContent = course8;
+	document.getElementById("lblgrade8").textContent = grade8;
+}
+
+function Average()
+{
+	average = average/numcourses;
+	gpa = average / 100 * 4;
+	average = Math.round(average * 100)/100;
+	gpa = Math.round(gpa * 100)/100;
+}
+
+function Letter()
+{
+	switch(true)
+	{
+		case average <= 100 && average >= 90:
+			letter = "A";
+			break;
+			
+		case average < 90 && average >= 80:
+			letter = "B";
+			break;
+			
+		case average < 80 && average >= 70:
+			letter = "C";
+			break;
+			
+		case average < 70 && average >= 60:
+			letter = "D";
+			break;
+			
+		case average < 60 && average >= 0:
+			letter = "F";
+			break;
+			
+		default:
+			msgdisp = "Something went wrong... No month";
+			break;
+			
+	}
+}
