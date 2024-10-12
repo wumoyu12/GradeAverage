@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Grade-Average</title>
+		<link rel="stylesheet" type="text/css" href="customize.css"></link>
+		<script src="GradeAverage.js"></script>
+	</head>
+	<body>
+		<h1>Grade-Report</h1>
+		<h2>Student Information</h2>
+		
+		<p id="firstpart">
+			<label id="lblfirstname">Enter the first name: </label>
+			<input type="text" id="txtfirstname" autofocus></input><br>
+			
+			<label id="lbllastname">Enter the last name: </label>
+			<input type="text" id="txtlastname"></input><br><br>
+			
+			<label id="lblID">Enter the OSIS Number: </label>
+			<input type="text" id="txtID"></input><br><br>
+		</p>
+		
+		<h2>Grade Information</h2>
+		
+		<p id="secondpart">	
+			<label id="lblCourse">Enter the course name: </label>
+			<input type="text" id="txtCourse"></input><br>
+			
+			<label id="lblGrade">Enter the grade: </label>
+			<input type="text" id="txtGrade"></input><br><br>
+			
+			<button type="button" id="btnAddCourse">Add Course</button><br>
+			
+			<button type="button" id="btnsubmit">SUBMIT</button><br><br>
+			
+			<label id="lblName"></label><br>
+			<label id="lblOSIS"></label><br>	
+			<label id="lblAverage"></label><br>
+			<label id="lblGPA"></label><br>
+			<label id="lblLetter"></label><br>
+			
+			<label id="lblcourse1"></label>
+			<label id="lblgrade1"></label><br>	
+			<label id="lblcourse2"></label>
+			<label id="lblgrade2"></label><br>
+			<label id="lblcourse3"></label>
+			<label id="lblgrade3"></label><br>
+			<label id="lblcourse4"></label>
+			<label id="lblgrade4"></label><br>
+			<label id="lblcourse5"></label>
+			<label id="lblgrade5"></label><br>
+			<label id="lblcourse6"></label>	
+			<label id="lblgrade6"></label><br>
+			<label id="lblcourse7"></label>
+			<label id="lblgrade7"></label><br>
+			<label id="lblcourse8"></label>
+			<label id="lblgrade8"></label><br>			
+		</p>	
+
+	</body>
+</html>
