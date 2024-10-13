@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Grade-Average</title>
+		<link rel="stylesheet" type="text/css" href="customize.css"></link>
+		<script src="GradeAverage.js"></script>
+	</head>
+	<body>
+		<h1>Grade-Report</h1>
+		<h2>Student Information</h2>
+		
+		<p id="firstpart">
+			<label id="lblfirstname">Enter the first name: </label>
+			<input type="text" id="txtfirstname" autofocus></input><br>
+			
+			<label id="lbllastname">Enter the last name: </label>
+			<input type="text" id="txtlastname"></input><br><br>
+			
+			<label id="lblID">Enter the OSIS Number: </label>
+			<input type="text" id="txtID"></input><br><br>
+		</p>
+		
+		<h2>Grade Information</h2>
+		
+		<p id="secondpart">	
+			<label id="lblCourse">Enter the course name: </label>
+			<input type="text" id="txtCourse"></input><br>
+			
+			<label id="lblGrade">Enter the grade: </label>
+			<input type="text" id="txtGrade"></input><br><br>
+			
+			<button type="button" id="btnAddCourse">Add Course</button><br>
+			<button type="button" id="btnsubmit">SUBMIT</button><br><br>
+			
+			<label id="lblDisplay"></label><br>		
+		</p>	
+
+	</body>
+</html>
