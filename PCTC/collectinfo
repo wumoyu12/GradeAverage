@@ -30,8 +30,21 @@ public class CollectInfo
 		System.out.print("Enter the first code (hint - string): ");
 		inputStr = allinput.nextLine();
 		
+		CrackCode code1 = new CrackCode(inputStr);
+		if(code1.Check1() == true)
+		{
+			System.out.print("You got the first code correctly!");
+		}
+		
 		System.out.print("Enter the second code (hint - integer): ");
 		inputInt1 = allinput.nextInt();
+		
+		CrackCode code2 = new CrackCode(inputInt1);
+		
+		System.out.print("Enter the third code (hint - integer): ");
+		inputInt2 = allinput.nextInt();
+		
+		//CrackCode code3 = new CrackCode();
 	}
 }
 
