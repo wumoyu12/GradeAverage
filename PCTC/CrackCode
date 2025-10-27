@@ -1,0 +1,41 @@
+package javaPack;
+
+public class CrackCode 
+{
+	// declare variables
+	private String c1;
+	private int c2;
+	private int c3;
+	
+	public CrackCode(String theC1)
+	{
+		this.c1 = theC1;
+	}
+	
+	public CrackCode(int theC2)
+	{
+		this.c2 = theC2;
+	}
+	
+	public boolean Check1() 
+	{
+		boolean ToF = false;
+		int len = c1.length();
+		if(len == 3)
+		{
+			ToF = true;
+		}
+		return ToF;
+	}
+	
+	public boolean Check2() 
+	{
+		boolean ToF = false;
+		int len = c1.length();
+		if(len == 3)
+		{
+			ToF = true;
+		}
+		return ToF;
+	}
+}
