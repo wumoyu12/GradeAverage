@@ -1,3 +1,4 @@
+// Class that collect all info and display all results
 package javaPack;
 
 import java.util.Scanner;
@@ -20,31 +21,62 @@ public class CollectInfo
 	
 	public void AllInfo()
 	{
-		System.out.print("Enter your name: ");
+		System.out.print("Enter your name: "); // ask the name
 		name = allinput.nextLine();
 		
-		System.out.println("Welcome to Crack the Code " + name + "!");
+		System.out.println("Welcome to Crack the Code " + name + "!"); // concatenate the name in welcome msg
 		System.out.print("Are you ready to crack the code (enter yes or no)? ");
 		ready = allinput.nextLine();
+		
+		if(!ready.equalsIgnoreCase("yes")) // if input is not yes, end the program
+		{
+			System.out.println("Okay, bye!");
+			return;
+		}
 		
 		System.out.print("Enter the first code (hint - string): ");
 		inputStr = allinput.nextLine();
 		
-		CrackCode code1 = new CrackCode(inputStr);
+		CrackCode code1 = new CrackCode(inputStr); // check the first code
 		if(code1.Check1() == true)
 		{
-			System.out.print("You got the first code correctly!");
+			System.out.println("You got the first code correctly!"); // continue
+		}
+		else
+		{
+			System.out.println("Sorry, you got the first code wrong. Good luck next time."); // end the program
+			return;
 		}
 		
 		System.out.print("Enter the second code (hint - integer): ");
 		inputInt1 = allinput.nextInt();
+		allinput.nextLine();
 		
 		CrackCode code2 = new CrackCode(inputInt1);
 		
+		if(code2.Check2() == true)
+		{
+			System.out.println("You got the second code correctly!");
+		}
+		else
+		{
+			System.out.println("Sorry, you got the second code wrong. Good luck next time.");
+			return;
+		}
+		
 		System.out.print("Enter the third code (hint - integer): ");
 		inputInt2 = allinput.nextInt();
+		allinput.nextLine();
 		
-		//CrackCode code3 = new CrackCode();
+		CrackCode code3 = new CrackCode(inputInt2);
+		if(code3.Check3() == true)
+		{
+			System.out.println("You got the third code correctly!");
+			System.out.println("Congrats! You just cracked the code!");
+		}
+		else
+		{
+			System.out.println("Sorry, you got the third code wrong. Good luck next time.");
+		}
 	}
 }
-
