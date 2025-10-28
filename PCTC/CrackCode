@@ -1,24 +1,27 @@
+// Class that checks all three code and return if they are correct (true)
 package javaPack;
 
 public class CrackCode 
 {
 	// declare variables
 	private String c1;
-	private int c2;
-	private int c3;
+	private int c2or3;
 	
 	public CrackCode(String theC1)
 	{
+		// constructor for the first code which is a string
 		this.c1 = theC1;
 	}
 	
-	public CrackCode(int theC2)
+	public CrackCode(int theC2or3)
 	{
-		this.c2 = theC2;
+		// constructor for the second & third codes which are both integers
+		this.c2or3 = theC2or3;
 	}
 	
 	public boolean Check1() 
 	{
+		// check if string length of the first code = 3
 		boolean ToF = false;
 		int len = c1.length();
 		if(len == 3)
@@ -30,9 +33,26 @@ public class CrackCode
 	
 	public boolean Check2() 
 	{
+		// check if the second code = 19, or between 35 and 78 (exclude 78)
 		boolean ToF = false;
-		int len = c1.length();
-		if(len == 3)
+		if(c2or3 == 19 || (c2or3 >= 35 && c2or3 < 78))
+		{
+			ToF = true;
+		}
+		return ToF;
+	}
+	
+	public boolean Check3() 
+	{
+		// check if the third code is a positive even number, or ends with 1
+		boolean ToF = false;
+		
+		int ifEven;
+		ifEven = c2or3 % 2;
+		
+		int ifRemainOne;
+		ifRemainOne = c2or3 % 10;
+		if(c2or3 > 0 && (ifEven == 0 || ifRemainOne == 1))
 		{
 			ToF = true;
 		}
