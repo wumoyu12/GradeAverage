@@ -1,0 +1,58 @@
+package javaPack;
+
+public class CrackCode 
+{
+    // declare variables
+    private String c1;
+    private int c2;
+    
+    public CrackCode(String theC1)
+    {
+        this.c1 = theC1;
+    }
+    
+    public CrackCode(int theC2)
+    {
+        this.c2 = theC2;
+    }
+    
+    // check first code: string length = 3
+    public boolean Check1() 
+    {
+        boolean ToF = false;
+        int len = c1.length();
+        if(len == 3)
+        {
+            ToF = true;
+        }
+        return ToF;
+    }
+    
+    // check second code: 19 or between 35~77
+    public boolean Check2() 
+    {
+        boolean ToF = false;
+        if(c2 == 19)
+        {
+            ToF = true;
+        } else if(c2 >= 35 && c2 < 78)
+        {
+            ToF = true;
+        }
+        return ToF;
+    }
+    
+    // check third code: positive and (even or remainder 1 when divided by 10)
+    public boolean Check3()
+    {
+        boolean ToF = false;
+        if(c2 > 0)
+        {
+            if(c2 % 2 == 0 || c2 % 10 == 1)
+            {
+                ToF = true;
+            }
+        }
+        return ToF;
+    }
+}
