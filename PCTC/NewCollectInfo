@@ -1,71 +1,84 @@
+// Class that collect all info and display all results
 package javaPack;
 
 import java.util.Scanner;
 
 public class CollectInfo 
 {
-    // declare and initialize variables
-    String name;
-    String ready;
-    String inputStr;
-    int inputInt1 = 0;
-    int inputInt2 = 0;
-    
-    Scanner allinput = new Scanner(System.in);
-    
-    public CollectInfo()
-    {
-        AllInfo();
-    }
-    
-    public void AllInfo()
-    {
-        System.out.print("Enter your name: ");
-        name = allinput.nextLine();
-        
-        System.out.println("Welcome to Crack the Code " + name + "!");
-        System.out.print("Are you ready to crack the code (enter yes or no)? ");
-        ready = allinput.nextLine();
-        
-        
-        if(!ready.equalsIgnoreCase("yes")) {
-            return;
-        }
-        
-        System.out.print("Enter the first code (hint - string): ");
-        inputStr = allinput.nextLine();
-        
-        CrackCode code1 = new CrackCode(inputStr);
-        if(code1.Check1() == true)
-        {
-            System.out.println("Correct!");
-        } else {
-            System.out.println("Error! The first code is incorrect.");
-            return;
-        }
-        
-        System.out.print("Enter the second code (hint - integer): ");
-        inputInt1 = allinput.nextInt();
-        
-        CrackCode code2 = new CrackCode(inputInt1);
-        if(code2.Check2() == true)
-        {
-            System.out.println("Correct!");
-        } else {
-            System.out.println("Error! The second code is incorrect.");
-            return; 
-        }
-        
-        System.out.print("Enter the third code (hint - integer): ");
-        inputInt2 = allinput.nextInt();
-        
-        CrackCode code3 = new CrackCode(inputInt2);
-        if(code3.Check3() == true)
-        {
-            System.out.println("Correct!");
-            System.out.println("Congratulations! You cracked all the codes!");
-        } else {
-            System.out.println("Error! The third code is incorrect.");
-        }
-    }
+	// declare and initialize variables
+	String name = "" ;
+	String ready = "";
+	String inputStr = "";
+	int inputInt1 = 0;
+	int inputInt2 = 0;
+	
+	Scanner allinput = new Scanner(System.in);
+	
+	public CollectInfo()
+	{
+		AllInfo();
+	}
+	
+	public void AllInfo()
+	{
+		System.out.print("Enter your name: "); // ask the name
+		name = allinput.nextLine();
+		
+		System.out.println("Welcome to Crack the Code " + name + "!"); // concatenate the name in welcome msg
+		System.out.print("Are you ready to crack the code (enter yes or no)? ");
+		ready = allinput.nextLine();
+		
+		if(!ready.equalsIgnoreCase("yes")) // if input is not yes, end the program
+		{
+			System.out.println("Okay, bye!");
+			new CollectInfo();
+		}
+		
+		System.out.print("Enter the first code (hint - string): ");
+		inputStr = allinput.nextLine();
+		
+		CrackCode code1 = new CrackCode(inputStr); // check the first code
+		if(code1.Check1() == true)
+		{
+			System.out.println("You got the first code correctly!"); // continue
+		}
+		else
+		{
+			System.out.println("Sorry, you got the first code wrong. Good luck next time."); // end the program
+			
+			new CollectInfo();
+		}
+		
+		System.out.print("Enter the second code (hint - integer): ");
+		inputInt1 = allinput.nextInt();
+		allinput.nextLine();
+		
+		CrackCode code2 = new CrackCode(inputInt1);
+		
+		if(code2.Check2() == true)
+		{
+			System.out.println("You got the second code correctly!");
+		}
+		else
+		{
+			System.out.println("Sorry, you got the second code wrong. Good luck next time.");
+			new CollectInfo();
+		}
+		
+		System.out.print("Enter the third code (hint - integer): ");
+		inputInt2 = allinput.nextInt();
+		allinput.nextLine();
+		
+		CrackCode code3 = new CrackCode(inputInt2);
+		if(code3.Check3() == true)
+		{
+			System.out.println("You got the third code correctly!");
+			System.out.println("Congrats! You just cracked the code!");
+		}
+		else
+		{
+			System.out.println("Sorry, you got the third code wrong. Good luck next time.");
+		}
+		new CollectInfo();
+	}
 }
