@@ -1,0 +1,11 @@
+package javaPack;
+//Main class to start the program
+public class Genreral_Info {
+
+    public static void main(String[] args) 
+    {
+        // Create a new object to run the program
+        CollectInfo collect = new CollectInfo();
+    }
+
+}
