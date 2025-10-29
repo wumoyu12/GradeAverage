@@ -6,77 +6,128 @@ import java.util.Scanner;
 public class CollectInfo 
 {
 	// declare and initialize variables
-	String name;
-	String ready;
-	String inputStr;
-	int inputInt1 = 0;
-	int inputInt2 = 0;
+	String name = "" ;
+	String ready = "";
+	String inputStr1 = "";
+	String inputStr2 = "";
+	String inputStr3 = "";
 	
 	Scanner allinput = new Scanner(System.in);
 	
 	public CollectInfo()
 	{
-		AllInfo();
+		GetInfo();
 	}
 	
-	public void AllInfo()
+	public void GetInfo()
 	{
 		System.out.print("Enter your name: "); // ask the name
 		name = allinput.nextLine();
-		
-		System.out.println("Welcome to Crack the Code " + name + "!"); // concatenate the name in welcome msg
-		System.out.print("Are you ready to crack the code (enter yes or no)? ");
-		ready = allinput.nextLine();
-		
-		if(!ready.equalsIgnoreCase("yes")) // if input is not yes, end the program
+		if(name == "") // check if name is entered
 		{
-			System.out.println("Okay, bye!");
-			return;
+			System.out.println("Please make sure you enter your name"); 
+			GetInfo();
 		}
 		
+		System.out.println("Welcome to Crack the Code " + name + "!"); // concatenate the name in welcome msg
+		IfReady();
+	}
+	
+	public void IfReady()
+	{
+			System.out.print("Are you ready to crack the code (enter yes or no)? ");
+			ready = allinput.nextLine();
+			IfCont();
+	}
+	
+	public void IfCont()
+	{
+		if(!ready.equalsIgnoreCase("yes")) // input is not yes, check if it is no
+		{
+			if(!ready.equalsIgnoreCase("no")) // input is not no, ask to try again
+			{
+				System.out.println("Please enter yes or no");
+				IfReady();
+			}
+			else // input is no, end the program
+			{
+				System.out.println("Okay, bye!");
+				System.exit(0);
+			}
+		}
+		else // input is yes, continue
+		{
+			FirstCode();
+		}
+	}
+	
+	public void FirstCode()
+	{
 		System.out.print("Enter the first code (hint - string): ");
-		inputStr = allinput.nextLine();
-		
-		CrackCode code1 = new CrackCode(inputStr); // check the first code
+		inputStr1 = allinput.nextLine();
+		if(inputStr1 == "") // check if input is blank
+		{
+			System.out.println("Please make sure you enter the first code"); 
+			FirstCode();
+		}
+		CrackCode code1 = new CrackCode(inputStr1); // check the first code
 		if(code1.Check1() == true)
 		{
-			System.out.println("You got the first code correctly!"); // continue
+			System.out.println("You got the first code correctly!"); 
+			SecondCode(); // continue
 		}
 		else
 		{
-			System.out.println("Sorry, you got the first code wrong. Good luck next time."); // end the program
-			return;
+			System.out.println("Sorry, you got the first code wrong. Let's try again!"); 
+			IfReady(); 
 		}
-		
+	}
+	
+	public void SecondCode()
+	{
 		System.out.print("Enter the second code (hint - integer): ");
-		inputInt1 = allinput.nextInt();
-		allinput.nextLine();
-		
-		CrackCode code2 = new CrackCode(inputInt1);
+		inputStr2 = allinput.nextLine();
+		if(inputStr2 == "") // check if it is blank
+		{
+			System.out.println("Please make sure you enter the 2nd code"); 
+			SecondCode();
+		}
+		int inputInt2 = Integer.parseInt(inputStr2); // convert the string into int to check the if the input is correct
+		CrackCode code2 = new CrackCode(inputInt2);
 		
 		if(code2.Check2() == true)
 		{
 			System.out.println("You got the second code correctly!");
+			ThirdCode();
 		}
 		else
 		{
-			System.out.println("Sorry, you got the second code wrong. Good luck next time.");
-			return;
+			System.out.println("Sorry, you got the second code wrong. Let's try again!");
+			IfReady(); 
 		}
 		
+	}
+	public void ThirdCode()
+	{
 		System.out.print("Enter the third code (hint - integer): ");
-		inputInt2 = allinput.nextInt();
-		allinput.nextLine();
-		
-		CrackCode code3 = new CrackCode(inputInt2);
+		inputStr3 = allinput.nextLine();
+		if(inputStr3 == "") // check if it is blank
+		{
+			System.out.println("Please make sure you enter the 3rd code"); 
+			ThirdCode();
+		}
+		int inputInt3 = Integer.parseInt(inputStr3); // convert the string into int to check the if the input is correct
+		CrackCode code3 = new CrackCode(inputInt3);
 		if(code3.Check3() == true)
 		{
 			System.out.println("You got the third code correctly!");
 			System.out.println("Congrats! You just cracked the code!");
+			System.exit(0); // end the program
 		}
 		else
 		{
-			System.out.println("Sorry, you got the third code wrong. Good luck next time.");
+			System.out.println("Sorry, you got the third code wrong. Let's try again!");
+			IfReady(); 
 		}
 	}
 }
